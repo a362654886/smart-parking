@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 
 test.describe("Home Component", () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto("http://localhost:3000/smartParking"); // Replace with your dev server URL
+    await page.goto("https://master.d108nefkmcuke1.amplifyapp.com/"); // Replace with your dev server URL
   });
 
   test("should toggle checkbox and background colors correctly", async ({
