@@ -2,16 +2,16 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
-First, run the development server:
+First, run the development server:https://github.com/a362654886/smart-parking/blob/master/README.md
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+
+run playright test
+
+```bash
+npm run test:debug
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
