@@ -1,6 +1,8 @@
 import React, { FC, useState } from "react";
 import { StyledElement } from "./style";
 
+type StatusKeys = "sheets" | "beams" | "bolts" | "frames";
+
 type Element = {
   name: string;
 };
@@ -13,16 +15,16 @@ const Home: FC = () => {
     { name: "frames" },
   ];
 
-  const [status, setStatus] = useState({
+  const [status, setStatus] = useState<Record<StatusKeys, boolean>>({
     sheets: false,
     beams: false,
     bolts: false,
     frames: false,
   });
 
-  const handleChange = (key) => {
+  const handleChange = (key: string) => {
     setStatus((prevState) => {
-      const newState = { ...prevState, [key]: !prevState[key] };
+      const newState = { ...prevState, [key]: !prevState[key as StatusKeys] };
 
       if (!newState.sheets) {
         newState.beams = false;
@@ -36,7 +38,8 @@ const Home: FC = () => {
     });
   };
 
-  const getBackgroundColor = (key) => (status[key] ? "transparent" : "red");
+  const getBackgroundColor = (key: StatusKeys) =>
+    status[key] ? "transparent" : "red";
 
   return (
     <div>
@@ -47,11 +50,13 @@ const Home: FC = () => {
             <input
               type="checkbox"
               id={`${i.name}-status`}
-              checked={status[i.name]}
+              checked={status[i.name as StatusKeys]}
             />
             <span
               id={`${i.name}-station`}
-              style={{ backgroundColor: getBackgroundColor(i.name) }}
+              style={{
+                backgroundColor: getBackgroundColor(i.name as StatusKeys),
+              }}
             >
               {i.name.toLocaleUpperCase()}
             </span>
